@@ -1,0 +1,12 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+    <form method="post" action="{{ path('users_delete', {'id': user.id}) }}" onsubmit="return confirm('Voulez vous supprimer cet utilisateur ? ');">
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="_method" value="DELETE">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+        </div>
+        <button class="btn btn-primary">Supprimer</button>
+    </form>
+{% endblock %}
